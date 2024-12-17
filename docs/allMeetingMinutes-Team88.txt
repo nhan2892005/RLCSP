@@ -1,0 +1,132 @@
+﻿BIÊN BẢN CUỘC HỌP NHÓM 88
+Thành viên tham gia: Nguyễn Phúc Nhân - 100%, Phan Đức Nhã - 100%, Lê Hoàng Luân - 100%
+________________
+
+
+Biên bản họp ngày 02/11/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Phân công nhiệm vụ cho từng thành viên.
+   * Thảo luận kế hoạch thực hiện dự án.
+   * Đề ra mục tiêu hoàn thành báo cáo.
+* Quyết định:
+   * Nguyễn Phúc Nhân: Thiết kế cấu trúc báo cáo, viết code hiện thực và phân tích thuật toán.
+   * Phan Đức Nhã: Viết phần giới thiệu và cơ sở lý thuyết, thực hiện các case study.
+   * Lê Hoàng Luân: Nghiên cứu thuật toán và phân tích kết quả.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 09/11/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Kiểm tra tiến độ công việc của các thành viên.
+   * Giới thiệu thuật toán Generate Column.
+* Quyết định:
+   * Tiếp tục thực hiện đúng theo kế hoạch đã đề ra.
+   * Hạn chót:
+      * Phần báo cáo giới thiệu và cơ sở lý thuyết: Hoàn thành trước ngày 15/11/2024.
+      * Code và báo cáo thuật toán Generate Column: Hoàn thành trước ngày 16/11/2024.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 16/11/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Kiểm tra tiến độ công việc.
+   * Giới thiệu thuật toán Best Fit.
+* Quyết định:
+   * Tiếp tục thực hiện theo kế hoạch.
+   * Hạn chót:
+      * Code và báo cáo thuật toán Best Fit: Hoàn thành trước ngày 23/11/2024.
+   * Chuẩn bị giới thiệu các case study trong tuần tiếp theo.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 23/11/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Kiểm tra tiến độ công việc.
+   * Giới thiệu các case study và cách phân tích kết quả.
+* Quyết định:
+   * Tiếp tục thực hiện đúng tiến độ đã đề ra.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 01/12/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Kiểm tra tiến độ công việc của từng thành viên.
+   * Đề ra kế hoạch cho giai đoạn hoàn thiện báo cáo.
+* Quyết định:
+   * Tiếp tục thực hiện đúng kế hoạch đã đề ra.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 08/12/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Tổng hợp tiến độ và đánh giá kết quả công việc.
+   * Thảo luận về việc chỉnh sửa và cải tiến báo cáo.
+   * Chuẩn bị nội dung thuyết trình.
+* Quyết định:
+   * Hoàn thiện từng phần của báo cáo trước ngày 12/12/2024.
+   * Nguyễn Phúc Nhân: Tổng hợp và định dạng báo cáo.
+   * Phan Đức Nhã: Chuẩn bị nội dung slide thuyết trình.
+   * Lê Hoàng Luân: Đảm bảo các kết quả phân tích được trình bày rõ ràng.
+   * Tổ chức buổi họp thử thuyết trình vào ngày 14/12/2024.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 10/12/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Tổng hợp nội dung hoàn chỉnh của bài báo cáo.
+   * Review các phần đã hoàn thành, đảm bảo logic và tính nhất quán.
+   * Kiểm tra các lỗi về ngữ pháp, định dạng, và trình bày báo cáo.
+* Quyết định:
+   * Nguyễn Phúc Nhân sẽ tiến hành chỉnh sửa định dạng báo cáo và thống nhất nội dung tổng thể.
+   * Phan Đức Nhã và Lê Hoàng Luân kiểm tra lại các phần nội dung để đảm bảo tính chính xác và đầy đủ.
+   * Hoàn thành việc tổng hợp báo cáo trước ngày 12/12/2024.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 12/12/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Kiểm tra và review lại toàn bộ phần code đã hoàn thành.
+   * Đảm bảo code chạy đúng, hiệu quả và đáp ứng yêu cầu dự án.
+   * Chuẩn bị nộp code.
+* Quyết định:
+   * Nguyễn Phúc Nhân đảm bảo code được kiểm tra kỹ lưỡng và hoàn tất tài liệu hướng dẫn.
+   * Phan Đức Nhã và Lê Hoàng Luân phối hợp kiểm tra kết quả và tối ưu hóa code nếu cần.
+   * Nộp toàn bộ code vào hệ thống trước 17:00 ngày 12/12/2024.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.
+________________
+
+
+Biên bản họp ngày 15/12/2024
+* Thành viên tham dự: Nguyễn Phúc Nhân, Phan Đức Nhã, Lê Hoàng Luân.
+* Nội dung thảo luận:
+   * Hoàn thiện và nộp bài báo cáo.
+   * Kiểm tra lại toàn bộ báo cáo trước khi nộp, đảm bảo không còn lỗi sai.
+   * Thảo luận rút kinh nghiệm cho các dự án nhóm trong tương lai.
+* Quyết định:
+   * Nguyễn Phúc Nhân tiến hành nộp báo cáo đúng thời hạn (trước 17:00 ngày 15/12/2024).
+   * Phan Đức Nhã và Lê Hoàng Luân hỗ trợ kiểm tra lần cuối nội dung và định dạng báo cáo.
+* Thời gian họp: 14:00 - 15:30.
+* Địa điểm: Phòng họp trực tuyến Google Meet.

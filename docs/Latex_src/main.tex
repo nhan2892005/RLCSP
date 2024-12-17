@@ -1,0 +1,45 @@
+% FORMAT AND PACKAGES
+% {
+\documentclass[a4paper]{article}
+\usepackage{Styles/hcmut}
+
+% DOCUMENT
+\begin{document}
+\input{cover_page}
+
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\printunsrtglossary[type={symbols}, title={Danh sách các ký hiệu}]
+\printunsrtglossary[type={abbreviations}, title={Danh sách các từ viết tắt}]
+\pagebreak
+\listoffigures
+\listoftables
+\pagebreak
+
+\addcontentsline{toc}{section}{\listfigurename}
+\addcontentsline{toc}{section}{\listtablename}
+
+\input{memlist}
+
+\input{Source/Intro_background/intro}
+\input{Source/Intro_background/background}
+\input{Source/model/model}
+\input{Source/algorithms/main_algo}
+\input{Source/result/main_res}
+\input{Source/cases/main_case}
+\input{Source/conclusion/conclustion}
+
+% for testing
+
+% REFERENCES
+\pagebreak
+\nocite{*}
+\printbibliography[
+heading=bibintoc,
+title={Tài liệu tham khảo}
+]
+\end{document}
+

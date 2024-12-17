@@ -1,0 +1,202 @@
+\section{Mô hình cho bài toán cắt tấm hai chiều}
+\subsection{Mô tả bài toán}
+
+\hspace{0.5cm} Cho một tập hợp gồm \( n \) miếng hình chữ nhật cần cắt với kích thước \( w_1 \times l_1, w_2 \times l_2, \dots, w_n \times l_n \), và nhu cầu tương ứng \( d_1, d_2, \dots, d_n \). Nhiệm vụ là cắt các miếng này từ \( m \) tấm vật liệu có kích thước \( W_1 \times L_1, W_2 \times L_2, \dots, W_m \times L_m \), với giả định rằng các tấm vật liệu đủ để đáp ứng nhu cầu cắt đặt ra. Tất cả các đường cắt phải theo các đường thẳng vuông góc, đảm bảo mỗi miếng được cắt thành hình chữ nhật nguyên vẹn.
+
+Mục tiêu của bài toán là xây dựng một kế hoạch cắt tối ưu nhằm giảm thiểu lãng phí vật liệu, cụ thể là tối ưu hóa số lượng tấm vật liệu cần sử dụng để đáp ứng yêu cầu cắt.
+
+Bài toán có thể được phân thành hai trường hợp chính:
+\begin{itemize}
+    \item \textbf{Kích thước tấm đồng nhất:} Tất cả các tấm vật liệu có kích thước giống nhau, giúp đơn giản hóa quy trình cắt nhưng vẫn đòi hỏi lập kế hoạch tối ưu.
+    \item \textbf{Kích thước tấm không đồng nhất:} Các tấm vật liệu có kích thước khác nhau, làm tăng độ phức tạp vì cần xem xét đặc tính của từng loại tấm vật liệu.
+\end{itemize}
+
+Các ràng buộc chính bao gồm đảm bảo rằng tất cả các đường cắt đều vuông góc, không có sự chồng lấn giữa các miếng, và nhu cầu của mỗi loại miếng được đáp ứng đầy đủ.
+
+\subsection{Mô hình đơn giản}
+\subsubsection{Các biến và tham số}
+
+\textbf{Tham số}
+
+\begin{itemize}
+    \item \( n \): Số lượng miếng cần cắt.
+    \item \( m \): Số lượng tấm vật liệu sẵn có.
+    \item \( w_p, l_p \): Chiều rộng và chiều dài của miếng \( p \) (\( p \in [1, n] \)).
+    \item \( d_p \): Nhu cầu của miếng \( p \).
+    \item \( W_s, L_s \): Chiều rộng và chiều dài của tấm vật liệu \( s \) (\( s \in [1, m] \)) (cho trường hợp nhiều kích thước tấm).
+    \item \( I_{ps} = W_s - w_p + 1 \): Số vị trí khả thi theo trục ngang trên tấm \( s \) để đặt miếng \( p \).
+    \item \( J_{ps} = L_s - l_p + 1 \): Số vị trí khả thi theo trục dọc trên tấm \( s \) để đặt miếng \( p \).
+\end{itemize}
+
+\textbf{Biến quyết định}
+
+\( x_{spij} \): Biến nhị phân, chỉ ra rằng miếng \( p \) được đặt trên tấm \( s \) tại vị trí \((i, j)\), tức tọa độ góc dưới bên trái.
+
+\( y_s , \quad \forall s \in \{1, 2, \dots, m\} \): \( y_s = 1 \) nếu tấm \( s \) được sử dụng (ít nhất một miếng được đặt lên đó), và \( y_s = 0 \) nếu tấm \( s \) không được sử dụng.
+
+\subsubsection{Hàm mục tiêu}
+
+Mục tiêu là giảm thiểu diện tích của các tấm vật liệu được sử dụng.
+
+Diện tích lãng phí của tấm \( s \) là phần không sử dụng:  
+\[
+\text{Waste}_s = L_s \cdot W_s - \sum_{p=1}^n \sum_{i=1}^{I_{ps}} \sum_{j=1}^{J_{ps}} x_{psij} \cdot w_p \cdot l_p
+\]  
+Hàm mục tiêu:  
+\[
+\text{Minimize} \quad \sum_{s=1}^m y_s \cdot \left(L_s \cdot W_s - \sum_{p=1}^n \sum_{i=1}^{I_{ps}} \sum_{j=1}^{J_{ps}} x_{psij} \cdot w_p \cdot l_p \right)
+\]  
+Hoặc tương đương:  
+\[
+\text{Minimize} \quad \sum_{s=1}^m y_s \cdot L_s \cdot W_s - \sum_{s=1}^m \sum_{p=1}^n \sum_{i=1}^{I_{ps}} \sum_{j=1}^{J_{ps}} x_{psij} \cdot w_p \cdot l_p
+\]
+
+\subsubsection{Các ràng buộc}
+
+\begin{enumerate}
+
+\item \textbf{Ràng buộc không chồng lấn}
+
+Tổng các biến \( x_{psij} \) cho tất cả các miếng \( p \) tại bất kỳ ô lưới nào \((i, j)\) trên tấm \( s \) không được vượt quá 1, nghĩa là một ô lưới không thể bị chồng lấn bởi nhiều miếng.  
+\[
+\sum_{p=1}^{n} \sum_{i=\max(0, u - l_p + 1)}^{\min(L_s - l_p, u)} \sum_{l=\max(0, v - w_p + 1)}^{\min(W_s - w_p, v)} x_{psij} \leq 1, \quad \forall s \in [1,2,...,m], \forall u, v
+\]
+
+\item \textbf{Ràng buộc trong giới hạn}
+
+Đảm bảo rằng miếng \( p \) không vượt ra ngoài ranh giới của tấm \( s \). Nếu vị trí đặt vượt quá biên của tấm, biến quyết định \( x_{psij} \) phải bằng 0.  
+\[
+x_{psij} \leq \left( 1 - \mathbb{I}\left( i + l_p > L_s \right) \right), \quad \forall s, p, i, j
+\]  
+\[
+x_{psij} \leq \left( 1 - \mathbb{I}\left( j + w_p > W_s \right) \right), \quad \forall s, p, i, j
+\]
+
+\item \textbf{Đáp ứng nhu cầu}
+
+Đảm bảo tất cả các nhu cầu đều được đáp ứng:  
+\[
+\sum_{s=1}^{m} \sum_{i=1}^{I_{ps}} \sum_{j=1}^{J_{ps}} x_{psij} \geq d_p, \quad \forall p \in \{1, 2, \dots, n\} 
+\]
+
+\textbf{Ràng buộc nhị phân}
+Tất cả các biến quyết định phải tuân thủ giá trị logic:  
+\[
+x_{psij}\in \{0, 1\}, \quad \forall s, p, i ,j
+\]  
+\[
+y_s \in \{0, 1\}
+\]
+
+\end{enumerate}
+
+\subsubsection{Đánh giá mô hình}
+\hspace{0.5cm} Mô hình này rõ ràng và có cấu trúc tốt về mặt lý thuyết. Tuy nhiên, việc triển khai thực tế sẽ yêu cầu một lượng lớn biến quyết định (biến nhị phân). Cụ thể, mỗi biến xác định xem miếng \( p \) có được đặt trên tấm \( s \) tại vị trí \( i, j \) hay không. Do đó, tổng số biến quyết định cần thiết là \( n \times m \times \sum_{i=1}^m L_i \times W_i \). Điều này làm tăng độ phức tạp tính toán của mô hình, đặc biệt trong các trường hợp có số lượng miếng hoặc vị trí lớn.
+
+\subsection{Mô hình thu gọn}  
+\hspace{0.5cm}Mô hình này được lấy cảm hứng từ công trình của Fabio Furini trong bài báo đăng trên *Computers \& Operations Research* (tháng 8 năm 2013) \cite{furini2013cuttingstock}. Mục tiêu của mô hình là sử dụng Lập trình hỗn hợp số nguyên (MIP) để giải các bài toán tối ưu hóa.  
+
+\subsubsection{Biến và tham số}  
+\begin{itemize}  
+    \item \textbf{Tham số:}  
+    \begin{itemize}  
+        \item $n$: Tổng số loại sản phẩm cần cắt.  
+        \item $d_j$: Nhu cầu của loại sản phẩm $j$, với $j = 1, \dots, n$.  
+        \item $w_i$: Chiều rộng của sản phẩm $i$, với $i = 1, \dots, n$, được sắp xếp theo thứ tự giảm dần ($w_1 \geq w_2 \geq \dots \geq w_n$).  
+        \item $l_i$: Chiều dài của sản phẩm $i$, với $i = 1, \dots, n$.  
+        \item $A_h$: Diện tích của một tấm nguyên liệu loại $h$, với $h = 1, \dots, p$.  
+        \item $L_h, W_h$: Chiều dài và chiều rộng của một tấm nguyên liệu loại $h$.  
+    \end{itemize}  
+    \item \textbf{Biến:}  
+    \begin{itemize}  
+        \item $y_i^h$: Biến nhị phân; bằng 1 nếu sản phẩm $i$ khởi tạo mức $i$ trong tấm nguyên liệu loại $h$.  
+        \item $x_{ij}^h$: Biến nguyên; số lượng sản phẩm loại $j$ được sắp xếp vào mức $i$ trong tấm nguyên liệu loại $h$.  
+        \item $q_k^h$: Biến nhị phân; bằng 1 nếu mức $k$ khởi tạo tấm nguyên liệu $k$ loại $h$.  
+        \item $z_{ki}^h$: Biến nhị phân; bằng 1 nếu mức $i$ được gán cho tấm nguyên liệu $k$ loại $h$.  
+    \end{itemize}  
+\end{itemize}  
+
+\subsubsection{Hàm mục tiêu}  
+Tối thiểu hóa tổng diện tích của các tấm nguyên liệu được sử dụng:  
+\[
+\min \sum_{h=1}^{p} A_h \sum_{k=1}^{n} q_k^h
+\]  
+
+\subsubsection{Các ràng buộc}  
+\begin{enumerate}  
+    \item \textbf{Đáp ứng nhu cầu:} Đảm bảo rằng nhu cầu của mỗi loại sản phẩm được đáp ứng:  
+    \[
+    \sum_{h=1}^{p} \left( \sum_{i=1}^{j} x_{ij}^h + \sum_{i=j}^{n} y_i^h \right) \geq d_j, \quad j = 1, \dots, n.
+    \]  
+
+    \item \textbf{Ràng buộc chiều rộng:} Đảm bảo chiều rộng của mức không vượt quá chiều rộng của tấm nguyên liệu:  
+    \[
+    \sum_{j=i}^{n} l_j x_{ij}^h \leq (L_h - l_i) y_i^h, \quad i = 1, \dots, n-1; \, h = 1, \dots, p.
+    \]  
+
+    \item \textbf{Phân bổ mức:} Mỗi mức khởi tạo hoặc là một tấm nguyên liệu mới hoặc là một phần của tấm nguyên liệu hiện có:  
+    \[
+    \sum_{k=1}^{i-1} z_{ki}^h + q_i^h = y_i^h, \quad i = 1, \dots, n; \, h = 1, \dots, p.
+    \]  
+
+    \item \textbf{Ràng buộc chiều cao:} Đảm bảo chiều cao của tấm nguyên liệu không vượt quá giới hạn:  
+    \[
+    \sum_{i=k+1}^{n} w_i z_{ki}^h \leq (W_h - w_k) q_k^h, \quad k = 1, \dots, n-1; \, h = 1, \dots, p.
+    \]  
+
+    \item \textbf{Miền giá trị của biến:}  
+    \[
+    y_i^h, q_k^h, z_{ki}^h \in \{0, 1\}, \quad x_{ij}^h \geq 0.
+    \]  
+\end{enumerate}  
+
+\subsection{Mô hình tối ưu hóa mẫu cắt}  
+
+\subsubsection{Biến và tham số}  
+\begin{itemize}  
+    \item \textbf{Tham số:}  
+    \begin{itemize}  
+        \item $N$: Số loại sản phẩm cần cắt.  
+        \item $K$: Số loại chiều rộng của cuộn nguyên liệu.  
+        \item $w_i$: Chiều rộng của sản phẩm $i$, với $i = 1, \dots, N$.  
+        \item $l_i$: Chiều dài của sản phẩm $i$, với $i = 1, \dots, N$.  
+        \item $d_i$: Nhu cầu của sản phẩm $i$, với $i = 1, \dots, N$.  
+        \item $W_k$: Chiều rộng tiêu chuẩn của cuộn loại $k$, với $k = 1, \dots, K$.  
+        \item $J_k$: Số mẫu cắt cho cuộn có chiều rộng $W_k$.  
+    \end{itemize}  
+
+    \item \textbf{Biến:}  
+    \begin{itemize}  
+        \item $V_{kji}$: Số lượng sản phẩm có chiều rộng $w_i$ được cắt bằng mẫu cắt thứ $j$ trên cuộn loại $k$.  
+        \item $L_{kj}$: Chiều dài được sản xuất bằng mẫu cắt thứ $j$ trên cuộn loại $k$.  
+    \end{itemize}  
+\end{itemize}  
+
+\subsubsection{Hàm mục tiêu}  
+Tối thiểu hóa tổng diện tích sử dụng từ tất cả các cuộn, tương đương với việc giảm thiểu lượng phế liệu:  
+\[
+\min \sum_{k=1}^{K} \sum_{j=1}^{J_k} W_k L_{kj}
+\]  
+
+\subsubsection{Các ràng buộc}  
+\begin{enumerate}  
+    \item \textbf{Đáp ứng nhu cầu:} Đảm bảo nhu cầu của mỗi loại sản phẩm được đáp ứng:  
+    \[
+    \sum_{k=1}^{K} \sum_{j=1}^{J_k} V_{kji} \geq d_i, \quad i = 1, \dots, N.
+    \]  
+
+    \item \textbf{Tính khả thi của mẫu cắt:} Tổng chiều rộng của các sản phẩm trong một mẫu không được vượt quá chiều rộng cuộn:  
+    \[
+    \sum_{i=1}^{N} V_{kji} w_i \leq W_k, \quad k = 1, \dots, K; \, j = 1, \dots, J_k.
+    \]  
+
+    \item \textbf{Mẫu không bị chi phối:} Các mẫu được chọn dựa trên chiều rộng cuộn khả thi gần nhất:  
+    \[
+    W_{k-1} < \sum_{i=1}^{N} V_{kji} w_i \leq W_k, \quad k = 1, \dots, K; \, j = 1, \dots, J_k.
+    \]  
+
+    \item \textbf{Không âm:} Tất cả các biến phải không âm:  
+    \[
+    L_{kj} \geq 0, \quad k = 1, \dots, K; \, j = 1, \dots, J_k.
+    \]  
+\end{enumerate}  

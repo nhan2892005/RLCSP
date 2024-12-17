@@ -1,4 +1,4 @@
-from policy import Policy
+from ..policy import Policy
 import numpy as np
 
 class BestFit(Policy):
